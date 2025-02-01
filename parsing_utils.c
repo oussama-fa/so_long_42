@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 21:19:37 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 05:21:00 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 05:26:29 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,20 @@ void	print_err(char *s)
 	while (*s)
 		write(2, s++, 1);
 	exit(1);
+}
+
+int	check_filename(char *str)
+{
+	int		len;
+	char	*here;
+
+	here = ft_strrchr(str, '.');
+	len = 0;
+	while (str[len])
+	{
+		if (!ft_strncmp(here, ".ber\0", 5))
+			return (TRUE);
+		len++;
+	}
+	return (FALSE);
 }

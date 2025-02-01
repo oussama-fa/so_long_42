@@ -6,27 +6,11 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 05:01:44 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 05:28:57 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	check_filename(char *str)
-{
-	int		len;
-	char	*here;
-
-	here = ft_strrchr(str, '.');
-	len = 0;
-	while (str[len])
-	{
-		if (!ft_strncmp(here, ".ber\0", 5))
-			return (TRUE);
-		len++;
-	}
-	return (FALSE);
-}
 
 char	*skip_last(char *s)
 {
