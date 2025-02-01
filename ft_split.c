@@ -6,13 +6,13 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 18:03:39 by oufarah           #+#    #+#             */
-/*   Updated: 2025/01/31 22:22:34 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 22:03:08 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static size_t	ft_countwords(char *str, char c)
+static size_t	cnt_w(char *str, char c)
 {
 	size_t	i;
 	size_t	rst;
@@ -41,9 +41,7 @@ static char	*ft_strndup(char *str, size_t n)
 	char	*s;
 
 	i = 0;
-	s = malloc(n + 1);
-	if (!s)
-		return (NULL);
+	s = ft_malloc(n + 1, ALLOC);
 	while (n--)
 	{
 		s[i] = str[i];
@@ -51,14 +49,6 @@ static char	*ft_strndup(char *str, size_t n)
 	}
 	s[i] = '\0';
 	return (s);
-}
-
-static char	**free_it(char **s, int i)
-{
-	while (i--)
-		free(s[i]);
-	free(s);
-	return (NULL);
 }
 
 static int	ft_split_helper(int *i, char const *s, char c)
@@ -83,18 +73,12 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	(1) && (i = 0, word = 0, start = 0);
-	strs = malloc((sizeof(char *)) * (ft_countwords((char *)s, c) + 1));
-	if (!strs)
-		return (NULL);
+	strs = ft_malloc((sizeof(char *)) * (cnt_w((char *)s, c) + 1), ALLOC);
 	while (s[i])
 	{
 		start = ft_split_helper(&i, s, c);
 		if (i > start)
-		{
 			strs[word++] = ft_strndup((char *)s + start, i - start);
-			if (!strs[word - 1])
-				return (free_it(strs, word));
-		}
 	}
 	strs[word] = NULL;
 	return (strs);

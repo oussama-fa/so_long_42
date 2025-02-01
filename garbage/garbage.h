@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   garbage.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 22:06:10 by oufarah          ###   ########.fr       */
+/*   Created: 2025/02/01 21:54:23 by oufarah           #+#    #+#             */
+/*   Updated: 2025/02/01 21:56:05 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef GARBAGE_H
+# define GARBAGE_H
 
-int	main(int ac, char **av)
+# include <stdlib.h>
+
+# define ALLOC 1
+# define CLEAR 2
+
+void	*ft_malloc(size_t size, int flag);
+
+typedef struct s_garbage
 {
-	if (ac != 2)
-		return (1);
-	parsing(av[1]);
-	ft_malloc(0, CLEAR);
-}
+	void				*address;
+	struct s_garbage	*next;
+
+}	t_garbage;
+
+#endif

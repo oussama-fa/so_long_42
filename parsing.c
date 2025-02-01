@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 05:28:57 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 22:07:55 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,42 @@ char	*skip_last(char *s)
 	i = -1;
 	while (s[len] && s[len] == '\n')
 		len--;
-	ret = malloc(len + 1);
+	ret = ft_malloc(len + 1, ALLOC);
 	while (++i <= len)
 		ret[i] = s[i];
 	ret[i] = '\0';
 	return (ret);
 }
 
-void	free_map(char **map, int rows)
-{
-	int	i;
-
-	i = -1;
-	while (++i < rows)
-		free(map[i]);
-	free(map);
-}
-
+// void flood_fill(char **map,int y, int x)
+// {
+// 	if(map[y][x] == '1' || map[y][x] == 'X' || map[y][x] == 'R')
+// 		return;
+// 	if(map[y][x] == 'E')// close exit
+// 	{
+// 		map[y][x] = 'R';
+// 		return;
+// 	}
+// 	map[y][x] = 'X';
+// 	flood_fill(map,y-1,x); 
+// 	flood_fill(map,y+1,x); 
+// 	flood_fill(map,y,x-1);
+// 	flood_fill(map,y,x+1);
+// }
+// int check_path(char **map)
+// {
+// 	int size = 0;
+// 	char **cp_map;
+// 	while(map[size])
+// 		size++;
+// 	cp_map = ft_malloc(sizeof(char *) * (size + 1),ALLOC);
+// 	int i = -1;
+// 	while(map[++i])
+// 		cp_map[i] = map[i];
+// 	cp_map[i] = NULL;
+// 	flood_fill(cp_map,get_player_pos(map)[0],get_player_pos(map)[1]);
+// 	return(0);
+// }
 void	parsing(char *av)
 {
 	char	*join;
@@ -62,7 +81,6 @@ void	parsing(char *av)
 	while (line)
 	{		
 		join = ft_strjoin(join, line);
-		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
@@ -72,13 +90,10 @@ void	parsing(char *av)
 	if (check_line(join) || check_validity_map(join))
 		print_err("Invalide Map\n");
 	map = ft_split(join, '\n');
-	if (!map)
-		return ;
-	free(join);
 	rows = 0;
 	while (map[rows])
 		rows++;
 	if (!is_map_valid(map, rows))
 		print_err("Invalide Map\n");
-	free_map(map, rows);
+	// check_path(map);
 }

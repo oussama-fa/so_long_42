@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 21:19:37 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 05:26:29 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 21:58:00 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	print_err(char *s)
 {
 	while (*s)
 		write(2, s++, 1);
+	ft_malloc(0, CLEAR);
 	exit(1);
 }
 

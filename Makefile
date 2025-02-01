@@ -6,7 +6,7 @@
 #    By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 20:44:58 by oufarah           #+#    #+#              #
-#    Updated: 2025/02/01 05:15:35 by oufarah          ###   ########.fr        #
+#    Updated: 2025/02/01 22:03:21 by oufarah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RM = rm -rf
 
 INCS = so_long.h
 
-SRC =  get_next_line.c  get_next_line_utils.c  parsing.c  so_long.c parsing_utils.c ft_split.c parsing_map.c
+SRC =  get_next_line.c  get_next_line_utils.c  parsing.c  so_long.c parsing_utils.c ft_split.c parsing_map.c garbage/garbage.c
 
 OBJS = $(SRC:.c=.o)
 

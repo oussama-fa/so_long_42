@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 05:21:54 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 21:50:14 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include "garbage/garbage.h"
 // bool
 # define TRUE 0
 # define FALSE 1
@@ -50,4 +51,19 @@ void	parsing(char *av);
 // error handling
 void	print_err(char *s);
 
+// typedef struct player{
+//     int x;
+//     int y;
+// }t_player;
+// typedef struct textures{
+//     void *wall;
+//     void *space;
+//     void *player;
+//     void *collect;
+//     void *exit;
+// }t_textures;
+// typedef struct params{
+//     // all the data that you will need
+//     // map , player,textures, mlx_ptrs ...
+// }
 #endif
