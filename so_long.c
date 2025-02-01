@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 01:50:47 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:31:52 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (1);
 	parsing(av[1]);
+	free(av[1]);
 }
