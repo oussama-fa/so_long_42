@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 04:27:40 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:30:36 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ void	parsing(char *av)
 		rows++;
 	if (!is_map_valid(map, rows))
 		print_err("Invalide Map\n");
+	free_map(map, rows);
 }
 
 // jisos
