@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:56:42 by oufarah           #+#    #+#             */
-/*   Updated: 2025/01/31 20:56:46 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 03:30:08 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strchr(char *s, char c)
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
 	if (!s)
