@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 03:29:21 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 05:21:54 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+// bool
+# define TRUE 0
+# define FALSE 1
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
-// bool
-# define TRUE 0
-# define FALSE 1
 
 char	*get_next_line(int fd);
 char	*ft_strchr(char *s, char c);
@@ -33,13 +33,19 @@ char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 
 // parsing
-void	parsing(char *av);
-int		check_filename(char *str);
-int		ft_strncmp(char *s1, char *s2, size_t n);
-char	*ft_strstr(char *str, char *to_find);
 char	**ft_split(char const *s, char c);
+int		check_line(char *s);
+int		check_validity_map(char *s);
+int		check_same_len(char **map, int rows);
+int		check_walls(char **map, int rows, int cols);
+int		is_map_valid(char **map, int rows);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_strrchr(const char *s, int c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		ft_strncmp(char *s1, char *s2, size_t n);
+int		check_filename(char *str);
+char	*skip_last(char *s);
+void	free_map(char **map, int rows);
+void	parsing(char *av);
 
 // error handling
 void	print_err(char *s);

@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 21:19:37 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 01:41:30 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/01 05:21:00 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	dst[i] = '\0';
 	return (ft_strlen(src));
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	string_len;
-	size_t	lenght;
-	char	*ret;
-
-	if (!s)
-		return (NULL);
-	string_len = ft_strlen(s);
-	if (start >= string_len)
-		return (ft_strdup(""));
-	lenght = string_len - start;
-	if (lenght > len)
-		lenght = len;
-	ret = malloc(lenght + 1);
-	if (!ret)
-		return (NULL);
-	ft_strlcpy(ret, s + start, lenght + 1);
-	return (ret);
 }
 
 char	*ft_strrchr(const char *s, int c)
