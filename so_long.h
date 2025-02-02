@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 21:50:14 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/02 23:08:15 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,30 @@ char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(char *s1, char *s2, size_t n);
 int		check_filename(char *str);
 char	*skip_last(char *s);
-void	free_map(char **map, int rows);
 void	parsing(char *av);
 
 // error handling
 void	print_err(char *s);
 
-// typedef struct player{
-//     int x;
-//     int y;
-// }t_player;
-// typedef struct textures{
-//     void *wall;
-//     void *space;
-//     void *player;
-//     void *collect;
-//     void *exit;
-// }t_textures;
-// typedef struct params{
-//     // all the data that you will need
-//     // map , player,textures, mlx_ptrs ...
-// }
+typedef struct s_pos{
+	int	x;
+	int	y;
+}	t_pos;
+
+typedef struct s_textures{
+	void	*wall;
+	void	*space;
+	void	*player;
+	void	*collect;
+	void	*exit;
+}	t_textures;
+
+typedef struct s_game
+{
+	char		**map;
+	t_pos		player;
+	t_textures	*texture;
+	void		*mlx;
+}	t_game;
+
 #endif

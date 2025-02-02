@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 22:07:55 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/02 23:24:10 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,39 +32,33 @@ char	*skip_last(char *s)
 	return (ret);
 }
 
-// void flood_fill(char **map,int y, int x)
-// {
-// 	if(map[y][x] == '1' || map[y][x] == 'X' || map[y][x] == 'R')
-// 		return;
-// 	if(map[y][x] == 'E')// close exit
-// 	{
-// 		map[y][x] = 'R';
-// 		return;
-// 	}
-// 	map[y][x] = 'X';
-// 	flood_fill(map,y-1,x); 
-// 	flood_fill(map,y+1,x); 
-// 	flood_fill(map,y,x-1);
-// 	flood_fill(map,y,x+1);
-// }
-// int check_path(char **map)
-// {
-// 	int size = 0;
-// 	char **cp_map;
-// 	while(map[size])
-// 		size++;
-// 	cp_map = ft_malloc(sizeof(char *) * (size + 1),ALLOC);
-// 	int i = -1;
-// 	while(map[++i])
-// 		cp_map[i] = map[i];
-// 	cp_map[i] = NULL;
-// 	flood_fill(cp_map,get_player_pos(map)[0],get_player_pos(map)[1]);
-// 	return(0);
-// }
+void	flood_fill(char **map, int y, int x)
+{
+	if (map[y][x] == '1')
+		return ;
+	map[y][x] = '1';
+	flood_fill(map, y - 1, x);
+	flood_fill(map, y + 1, x);
+	flood_fill(map, y, x - 1);
+	flood_fill(map, y, x + 1);
+}
+
+void	check_valid_path(char **map_cpy, int y, int x)
+{
+	while (map_cpy[y])
+	{
+		while (map_cpy[y][x])
+			if (ft_strchr("10", map_cpy[y][x++]))
+				return (print_err("Invalide Path\n"));
+		y++;
+	}	
+}
+
 void	parsing(char *av)
 {
 	char	*join;
 	char	**map;
+	char	**map_cpy;
 	char	*line;
 	int		fd;
 	int		rows;
@@ -90,10 +84,12 @@ void	parsing(char *av)
 	if (check_line(join) || check_validity_map(join))
 		print_err("Invalide Map\n");
 	map = ft_split(join, '\n');
+	map_cpy = ft_split(join, '\n');
 	rows = 0;
 	while (map[rows])
 		rows++;
 	if (!is_map_valid(map, rows))
 		print_err("Invalide Map\n");
-	// check_path(map);
+	// flood_fill(map_cpy, y, x);
+	// check_valid_path(map_cpy, y, x);
 }
