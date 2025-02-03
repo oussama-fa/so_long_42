@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/03 01:16:12 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/03 01:31:00 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,53 +32,6 @@ char	*skip_last(char *s)
 	return (ret);
 }
 
-void	flood_fill(char **map, int y, int x)
-{
-	if (map[y][x] == '1')
-		return ;
-	map[y][x] = '1';
-	flood_fill(map, y - 1, x);
-	flood_fill(map, y + 1, x);
-	flood_fill(map, y, x - 1);
-	flood_fill(map, y, x + 1);
-}
-
-void	check_valid_path(char **map_cpy, int y, int x)
-{
-	int	tmpx;
-
-	while (map_cpy[y])
-	{
-		tmpx = x;
-		while (map_cpy[y][tmpx])
-		{
-			if (map_cpy[y][tmpx] == 'C' || map_cpy[y][tmpx] == 'E')
-				return (print_err("Invalide Path\n"));
-			tmpx++;
-		}
-		y++;
-	}	
-}
-
-t_pos	get_player_pos(char **map)
-{
-	t_pos	cor;
-
-	cor.y = 0;
-	while (map[cor.y])
-	{
-		cor.x = 0;
-		while (map[cor.y][cor.x])
-		{
-			if (map[cor.y][cor.x] == 'P')
-				return (cor);
-			cor.x++;
-		}
-		cor.y++;
-	}
-	return (cor);
-}
-
 int	checkline_validity(char *s)
 {
 	int	i;
@@ -93,14 +46,11 @@ int	checkline_validity(char *s)
 	return (1);
 }
 
-void	parsing(char *av)
+char	*mini_pars(char *av)
 {
 	t_game	pars;
-	t_pos	cor;
-	char	**map_cpy;
-	char	*line;
 	int		fd;
-	int		rows;
+	char	*line;
 
 	if (check_filename(av))
 		print_err("Invalide Filename\n");
@@ -109,10 +59,7 @@ void	parsing(char *av)
 		print_err("Can't Open File\n");
 	line = get_next_line(fd);
 	if (!line)
-	{
-		close(fd);
-		print_err("Nothing To Read\n");
-	}
+		(close(fd)), (print_err("Nothing To Read\n"));
 	pars.join = ft_strdup("");
 	while (line)
 	{		
@@ -125,6 +72,17 @@ void	parsing(char *av)
 		}
 	}
 	close(fd);
+	return (pars.join);
+}
+
+void	parsing(char *av)
+{
+	t_game	pars;
+	t_pos	cor;
+	char	**map_cpy;
+	int		rows;
+
+	pars.join = mini_pars(av);
 	while (*pars.join == '\n')
 		pars.join++;
 	pars.join = skip_last(pars.join);

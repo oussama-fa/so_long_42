@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/03 01:14:41 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/03 01:43:15 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int ac, char **av)
 {
 	if (ac != 2)
-		return (1);
+		print_err("Map Not Found\n");
 	parsing(av[1]);
 	ft_malloc(0, CLEAR);
 }

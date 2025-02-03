@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 21:19:37 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 21:58:00 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/03 01:40:24 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 
 void	print_err(char *s)
 {
+	write(2, "Error\n", 6);
 	while (*s)
 		write(2, s++, 1);
 	ft_malloc(0, CLEAR);
