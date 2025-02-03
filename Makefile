@@ -6,15 +6,15 @@
 #    By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 20:44:58 by oufarah           #+#    #+#              #
-#    Updated: 2025/02/03 01:29:24 by oufarah          ###   ########.fr        #
+#    Updated: 2025/02/03 05:27:45 by oufarah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CC = cc
-
 FLAGS = -Wall -Wextra -Werror
+MLX_FLAGS = ./libs/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 RM = rm -rf
 
@@ -27,7 +27,7 @@ OBJS = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME) :$(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME) 
 
 %.o: %.c $(INCS)
 	$(CC) $(FLAGS) -c $< -o $@

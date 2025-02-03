@@ -6,18 +6,18 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/03 01:39:05 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/03 05:40:49 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-// gnl
 # include <stdio.h> // remove_it
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+#include "./libs/MLX42.h"
 # include "garbage/garbage.h"
 // bool
 # define TRUE 0
