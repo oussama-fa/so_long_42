@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/03 05:40:49 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/03 06:06:18 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 #include "./libs/MLX42.h"
 # include "garbage/garbage.h"
 // bool
+
+# define HIGHT 1920
+# define WIGHT 1080
+
 # define TRUE 0
 # define FALSE 1
 
