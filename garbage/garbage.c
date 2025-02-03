@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:52:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 21:54:09 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/03 01:11:11 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_garbage	*ft_lstnew(void *adress)
 	new = malloc (sizeof(t_garbage));
 	if (!new)
 	{
+		free(adress);
 		ft_malloc(0, CLEAR);
 	}
 	new->address = adress;

@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/02 23:24:10 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/03 01:16:12 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,58 @@ void	flood_fill(char **map, int y, int x)
 
 void	check_valid_path(char **map_cpy, int y, int x)
 {
+	int	tmpx;
+
 	while (map_cpy[y])
 	{
-		while (map_cpy[y][x])
-			if (ft_strchr("10", map_cpy[y][x++]))
+		tmpx = x;
+		while (map_cpy[y][tmpx])
+		{
+			if (map_cpy[y][tmpx] == 'C' || map_cpy[y][tmpx] == 'E')
 				return (print_err("Invalide Path\n"));
+			tmpx++;
+		}
 		y++;
 	}	
 }
 
+t_pos	get_player_pos(char **map)
+{
+	t_pos	cor;
+
+	cor.y = 0;
+	while (map[cor.y])
+	{
+		cor.x = 0;
+		while (map[cor.y][cor.x])
+		{
+			if (map[cor.y][cor.x] == 'P')
+				return (cor);
+			cor.x++;
+		}
+		cor.y++;
+	}
+	return (cor);
+}
+
+int	checkline_validity(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (!ft_strchr("10CPE\n", s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	parsing(char *av)
 {
-	char	*join;
-	char	**map;
+	t_game	pars;
+	t_pos	cor;
 	char	**map_cpy;
 	char	*line;
 	int		fd;
@@ -70,26 +109,35 @@ void	parsing(char *av)
 		print_err("Can't Open File\n");
 	line = get_next_line(fd);
 	if (!line)
+	{
+		close(fd);
 		print_err("Nothing To Read\n");
-	join = ft_strdup("");
+	}
+	pars.join = ft_strdup("");
 	while (line)
 	{		
-		join = ft_strjoin(join, line);
+		pars.join = ft_strjoin(pars.join, line);
 		line = get_next_line(fd);
+		if (line && !checkline_validity(line))
+		{
+			close(fd);
+			print_err("Invalide Map\n");
+		}
 	}
 	close(fd);
-	while (*join == '\n')
-		join++;
-	join = skip_last(join);
-	if (check_line(join) || check_validity_map(join))
+	while (*pars.join == '\n')
+		pars.join++;
+	pars.join = skip_last(pars.join);
+	if (check_line(pars.join) || check_validity_map(pars.join))
 		print_err("Invalide Map\n");
-	map = ft_split(join, '\n');
-	map_cpy = ft_split(join, '\n');
+	pars.map = ft_split(pars.join, '\n');
+	map_cpy = ft_split(pars.join, '\n');
 	rows = 0;
-	while (map[rows])
+	while (pars.map[rows])
 		rows++;
-	if (!is_map_valid(map, rows))
+	if (!is_map_valid(pars.map, rows))
 		print_err("Invalide Map\n");
-	// flood_fill(map_cpy, y, x);
-	// check_valid_path(map_cpy, y, x);
+	cor = get_player_pos(map_cpy);
+	flood_fill(map_cpy, cor.y, cor.x);
+	check_valid_path(map_cpy, 0, 0);
 }

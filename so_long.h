@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/02 23:08:15 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/02 23:49:50 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_textures{
 typedef struct s_game
 {
 	char		**map;
+	char		*join;
 	t_pos		player;
 	t_textures	*texture;
 	void		*mlx;
