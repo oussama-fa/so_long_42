@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 06:06:25 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 06:11:09 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	set_textures(t_game *so_long)
 		|| !so_long->texture.exit || !so_long->texture.player
 		|| !so_long->texture.space)
 	{
-		dstroy(so_long);
 		print_err("Closed!\n");
+		dstroy(so_long);
 	}
 }
 
