@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 00:21:19 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 04:04:05 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_game
 	int			map_width;
 	int			map_height;
 	char		*join;
+	int			moves;
 	t_pos		player;
 	t_textures	texture;
 	void		*mlx;
@@ -89,7 +90,13 @@ char	*mini_pars(char *av);
 char	**ft_split(char const *s, char c);
 void	parsing(t_game *so_long, char *av);
 
+// textures
+void	set_height_width(t_game *so_long, char **map);
+void	draw_map(t_game *so_long, char **map, int y, int x);
+void	set_textures(t_game *so_long);
+
 // error handling
 void	print_err(char *s);
+int		dstroy(t_game *so_long);
 
 #endif
