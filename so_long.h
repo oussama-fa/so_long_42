@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/03 06:06:18 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 00:21:19 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-#include "./libs/MLX42.h"
+// #include "/home/oufarah/libs/MLX42.h"
 # include "garbage/garbage.h"
+# include "/home/oufarah/minilibx-linux/mlx.h"
+
 // bool
 
 # define HIGHT 1920
@@ -31,12 +33,14 @@
 #  define BUFFER_SIZE 42
 # endif
 
-typedef struct s_pos{
+typedef struct s_pos
+{
 	int	x;
 	int	y;
 }	t_pos;
 
-typedef struct s_textures{
+typedef struct s_textures
+{
 	void	*wall;
 	void	*space;
 	void	*player;
@@ -47,10 +51,13 @@ typedef struct s_textures{
 typedef struct s_game
 {
 	char		**map;
+	int			map_width;
+	int			map_height;
 	char		*join;
 	t_pos		player;
-	t_textures	*texture;
+	t_textures	texture;
 	void		*mlx;
+	void		*mlx_win;
 }	t_game;
 
 // gnl utils :
@@ -80,7 +87,7 @@ char	*skip_last(char *s);
 int		checkline_validity(char *s);
 char	*mini_pars(char *av);
 char	**ft_split(char const *s, char c);
-void	parsing(char *av);
+void	parsing(t_game *so_long, char *av);
 
 // error handling
 void	print_err(char *s);

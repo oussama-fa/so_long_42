@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/03 01:31:00 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 00:19:48 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*mini_pars(char *av)
 	return (pars.join);
 }
 
-void	parsing(char *av)
+void	parsing(t_game *so_long, char *av)
 {
 	t_game	pars;
 	t_pos	cor;
@@ -98,4 +98,6 @@ void	parsing(char *av)
 	cor = get_player_pos(map_cpy);
 	flood_fill(map_cpy, cor.y, cor.x);
 	check_valid_path(map_cpy, 0, 0);
+	so_long->map = pars.map;
+	so_long->player = cor;
 }
