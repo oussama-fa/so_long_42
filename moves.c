@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 04:30:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 08:28:32 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 13:33:56 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	move_player(t_game *game, int x, int y)
 	new_x = player->x + x;
 	new_y = player->y + y;
 	if (map[new_y][new_x] == 'E' && game->coin <= 0)
-		(ft_putstr("You Win!\n"), exit(0));
+		(ft_putstr("You Win!\n"), dstroy(game));
 	if (map[new_y][new_x] != '1' && map[new_y][new_x] != 'E')
 	{
 		if (map[new_y][new_x] == 'C')

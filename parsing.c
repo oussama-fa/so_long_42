@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 06:14:57 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 13:21:35 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ char	*skip_last(char *s)
 	i = -1;
 	while (s[len] && s[len] == '\n')
 		len--;
-	ret = ft_malloc(len + 1, ALLOC);
+	ret = ft_malloc(len + 2, ALLOC);
 	while (++i <= len)
 		ret[i] = s[i];
 	ret[i] = '\0';
+	printf("%d %d\n",len + 1, i);
 	return (ret);
 }
 

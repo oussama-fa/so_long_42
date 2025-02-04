@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 08:08:22 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 08:44:24 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	mlx_key_hook(so_long.mlx_win, key_hook, &so_long);
 	mlx_hook(so_long.mlx_win, 17, 0, dstroy, &so_long);
 	mlx_loop(so_long.mlx);
-	mlx_destroy_window(so_long.mlx, so_long.mlx_win);
+	free_textures(&so_long);
 	mlx_destroy_display(so_long.mlx);
 	ft_malloc(0, CLEAR);
 }
