@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 06:11:09 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 08:05:31 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ void	set_textures(t_game *so_long)
 	int	height;
 	int	width;
 
+	so_long->texture.wall = NULL;
+	so_long->texture.collect = NULL;
+	so_long->texture.exit = NULL;
+	so_long->texture.player = NULL;
+	so_long->texture.space = NULL;
 	so_long->texture.wall = mlx_xpm_file_to_image(so_long->mlx,
 			"textures/wall.xpm", &height, &width);
 	so_long->texture.collect = mlx_xpm_file_to_image(so_long->mlx,
@@ -78,8 +83,8 @@ void	set_textures(t_game *so_long)
 
 int	dstroy(t_game *so_long)
 {
-	mlx_clear_window(so_long->mlx, so_long->mlx_win);
 	mlx_destroy_window(so_long->mlx, so_long->mlx_win);
+	mlx_destroy_display(so_long->mlx);
 	exit(1);
 	return (1);
 }
