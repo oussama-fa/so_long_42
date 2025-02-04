@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 00:19:48 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 06:01:24 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	parsing(t_game *so_long, char *av)
 	while (*pars.join == '\n')
 		pars.join++;
 	pars.join = skip_last(pars.join);
-	if (check_line(pars.join) || check_validity_map(pars.join))
+	if (check_line(pars.join) || check_validity_map(pars.join, so_long))
 		print_err("Invalide Map\n");
 	pars.map = ft_split(pars.join, '\n');
 	map_cpy = ft_split(pars.join, '\n');

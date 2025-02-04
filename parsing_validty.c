@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 01:28:24 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/03 01:41:46 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 05:57:29 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	flood_fill(char **map, int y, int x)
 {
 	if (map[y][x] == '1')
 		return ;
+	if (map[y][x] == 'E')
+	{
+		map[y][x] = '1';
+		return ;
+	}
 	map[y][x] = '1';
 	flood_fill(map, y - 1, x);
 	flood_fill(map, y + 1, x);

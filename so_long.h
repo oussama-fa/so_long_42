@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 04:32:41 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 06:01:19 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_game
 	int			map_width;
 	int			map_height;
 	char		*join;
+	int			coin;
 	t_pos		player;
 	t_textures	texture;
 	void		*mlx;
@@ -69,7 +70,7 @@ char	*ft_strjoin(char *s1, char *s2);
 
 // parsing_map
 int		check_line(char *s);
-int		check_validity_map(char *s);
+int		check_validity_map(char *s, t_game *so_long);
 int		check_same_len(char **map, int rows);
 int		check_walls(char **map, int rows, int cols);
 int		is_map_valid(char **map, int rows);

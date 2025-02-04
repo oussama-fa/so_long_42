@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 04:54:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/02 22:10:47 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 06:00:59 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_line(char *s)
 	return (TRUE);
 }
 
-int	check_validity_map(char *s)
+int	check_validity_map(char *s, t_game *so_long)
 {
 	int	count_p;
 	int	count_e;
@@ -47,6 +47,7 @@ int	check_validity_map(char *s)
 	}
 	if (count_e != 1 || count_p != 1 || count_c < 1)
 		return (FALSE);
+	so_long->coin = count_c;
 	return (TRUE);
 }
 

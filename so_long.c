@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 04:38:45 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/04 06:03:44 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int ac, char **av)
 {
 	t_game	so_long;
 
+	so_long.coin = 0;
 	if (ac != 2)
 		print_err("Map Not Found\n");
 	parsing(&so_long, av[1]);
