@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 04:30:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 13:33:56 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/05 22:45:40 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,8 @@ int	key_hook(int keycode, t_game *game)
 		move_player(game, 1, 0);
 	else if (keycode == 65307)
 	{
-		ft_putstr("Error\n");
+		ft_putstr("Closed\n");
 		dstroy(game);
-		exit(0);
 	}
 	draw_map(game, game->map, -1, -1);
 	return (1);

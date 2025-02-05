@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 13:36:58 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/05 22:44:48 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	set_textures(t_game *so_long)
 	}
 }
 
-void    free_textures(t_game *game)
+void	free_textures(t_game *game)
 {
 	if (game->texture.wall)
 		mlx_destroy_image(game->mlx, game->texture.wall);
@@ -95,12 +95,11 @@ void    free_textures(t_game *game)
 		mlx_destroy_image(game->mlx, game->texture.space);
 	if (game->mlx_win)
 		mlx_destroy_window(game->mlx, game->mlx_win);
-
 }
+
 int	dstroy(t_game *so_long)
 {
 	free_textures(so_long);
-	// mlx_destroy_window(so_long->mlx, so_long->mlx_win);
 	mlx_destroy_display(so_long->mlx);
 	free(so_long->mlx);
 	ft_malloc(0, CLEAR);

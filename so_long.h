@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 13:37:06 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/05 22:46:37 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	parsing(t_game *so_long, char *av);
 void	set_height_width(t_game *so_long, char **map);
 void	draw_map(t_game *so_long, char **map, int y, int x);
 void	set_textures(t_game *so_long);
-void    free_textures(t_game *game);
+void	free_textures(t_game *game);
 // moves
 void	ft_putchar(char c);
 void	ft_putstr(char *s);

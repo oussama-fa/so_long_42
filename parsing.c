@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 13:21:35 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/05 22:42:35 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char	*skip_last(char *s)
 	while (++i <= len)
 		ret[i] = s[i];
 	ret[i] = '\0';
-	printf("%d %d\n",len + 1, i);
 	return (ret);
 }
 
