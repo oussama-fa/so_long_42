@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:56:34 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 22:05:45 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 00:23:06 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,10 @@ static char	*read_to_rest(int fd, char *rest)
 static char	*extract_line(char **rest)
 {
 	char	*line;
-	char	*temp;
 
 	line = get_linis(*rest);
 	if (!line)
 		return (NULL);
-	temp = *rest;
 	*rest = get_rest(*rest);
 	return (line);
 }

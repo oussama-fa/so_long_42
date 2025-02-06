@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/05 22:41:50 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 01:49:48 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	so_long.coin = 0;
 	if (ac != 2)
-		print_err("Map Not Found\n");
+		print_err("Invalide Input\n");
 	parsing(&so_long, av[1]);
 	so_long.mlx = mlx_init();
 	if (!so_long.mlx)
