@@ -6,19 +6,17 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/05 22:46:37 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 07:55:41 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdio.h> // remove_it
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-// #include "/home/oufarah/libs/MLX42.h"
-# include "garbage/garbage.h"
+# include "../garbage/garbage.h"
 # include "/home/oufarah/minilibx-linux/mlx.h"
 
 // bool

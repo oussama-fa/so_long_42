@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/06 01:31:06 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 07:59:41 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,16 @@ void	set_textures(t_game *so_long)
 	int	height;
 	int	width;
 
-	so_long->texture.wall = NULL;
-	so_long->texture.collect = NULL;
-	so_long->texture.exit = NULL;
-	so_long->texture.player = NULL;
-	so_long->texture.space = NULL;
 	so_long->texture.wall = mlx_xpm_file_to_image(so_long->mlx,
-			"textures/wall.xpm", &height, &width);
+			"Mandatory/textures/wall.xpm", &height, &width);
 	so_long->texture.collect = mlx_xpm_file_to_image(so_long->mlx,
-			"textures/collect.xpm", &height, &width);
+			"Mandatory/textures/collect.xpm", &height, &width);
 	so_long->texture.exit = mlx_xpm_file_to_image(so_long->mlx,
-			"textures/exit.xpm", &height, &width);
+			"Mandatory/textures/exit.xpm", &height, &width);
 	so_long->texture.player = mlx_xpm_file_to_image(so_long->mlx,
-			"textures/player.xpm", &height, &width);
+			"Mandatory/textures/player.xpm", &height, &width);
 	so_long->texture.space = mlx_xpm_file_to_image(so_long->mlx,
-			"textures/background.xpm", &height, &width);
+			"Mandatory/textures/background.xpm", &height, &width);
 	if (!so_long->texture.wall || !so_long->texture.collect
 		|| !so_long->texture.exit || !so_long->texture.player
 		|| !so_long->texture.space)
