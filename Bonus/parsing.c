@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/05 22:42:35 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 10:31:38 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	checkline_validity(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (!ft_strchr("10CPE\n", s[i]))
+		if (!ft_strchr("10CPEV\n", s[i]))
 			return (0);
 		i++;
 	}

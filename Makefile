@@ -6,7 +6,7 @@
 #    By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 20:44:58 by oufarah           #+#    #+#              #
-#    Updated: 2025/02/06 08:03:43 by oufarah          ###   ########.fr        #
+#    Updated: 2025/02/06 11:34:43 by oufarah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC =  Mandatory/get_next_line.c Mandatory/get_next_line_utils.c Mandatory/parsi
 
 SRC_B = Bonus/get_next_line.c Bonus/get_next_line_utils.c Bonus/parsing.c Bonus/so_long_bonus.c \
        Bonus/parsing_utils.c Bonus/ft_split.c Bonus/parsing_map.c Bonus/parsing_validty.c \
-       garbage/garbage.c Bonus/textures.c Bonus/moves.c
+       garbage/garbage.c Bonus/textures.c Bonus/moves.c Bonus/ft_itoa.c
 
 OBJS = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/06 07:59:41 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 10:45:40 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void	draw_map(t_game *so_long, char **map, int y, int x)
 					textures.collect, x * 64, y * 64);
 			if (map[y][x] == 'E')
 				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
-					textures.exit, x * 64, y * 64);
+					textures.exit_closed, x * 64, y * 64);
+			if (map[y][x] == 'V')
+				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
+					textures.enemy, x * 64, y * 64);
 		}
 	}
 }
@@ -57,18 +60,24 @@ void	set_textures(t_game *so_long)
 	int	height;
 	int	width;
 
+	so_long->texture.win = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/win.xpm", &height, &width);
+	so_long->texture.lose = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/lose.xpm", &height, &width);
+	so_long->texture.enemy = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/enemy_down.xpm", &height, &width);
 	so_long->texture.wall = mlx_xpm_file_to_image(so_long->mlx,
-			"Mandatory/textures/wall.xpm", &height, &width);
+			"Bonus/textures/wall.xpm", &height, &width);
 	so_long->texture.collect = mlx_xpm_file_to_image(so_long->mlx,
-			"Mandatory/textures/collect.xpm", &height, &width);
-	so_long->texture.exit = mlx_xpm_file_to_image(so_long->mlx,
-			"Mandatory/textures/exit.xpm", &height, &width);
+			"Bonus/textures/collect.xpm", &height, &width);
+	so_long->texture.exit_closed = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/exit_closed.xpm", &height, &width);
 	so_long->texture.player = mlx_xpm_file_to_image(so_long->mlx,
-			"Mandatory/textures/player.xpm", &height, &width);
+			"Bonus/textures/player.xpm", &height, &width);
 	so_long->texture.space = mlx_xpm_file_to_image(so_long->mlx,
-			"Mandatory/textures/background.xpm", &height, &width);
+			"Bonus/textures/background.xpm", &height, &width);
 	if (!so_long->texture.wall || !so_long->texture.collect
-		|| !so_long->texture.exit || !so_long->texture.player
+		|| !so_long->texture.exit_closed || !so_long->texture.player
 		|| !so_long->texture.space)
 	{
 		ft_putstr("Error\n");
@@ -82,8 +91,8 @@ void	free_textures(t_game *game)
 		mlx_destroy_image(game->mlx, game->texture.wall);
 	if (game->texture.collect)
 		mlx_destroy_image(game->mlx, game->texture.collect);
-	if (game->texture.exit)
-		mlx_destroy_image(game->mlx, game->texture.exit);
+	if (game->texture.exit_closed)
+		mlx_destroy_image(game->mlx, game->texture.exit_closed);
 	if (game->texture.player)
 		mlx_destroy_image(game->mlx, game->texture.player);
 	if (game->texture.space)

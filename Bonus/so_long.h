@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/06 07:55:41 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 11:35:27 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_pos
 {
 	int	x;
 	int	y;
+	int	dir;
 }	t_pos;
 
 typedef struct s_textures
@@ -42,8 +43,12 @@ typedef struct s_textures
 	void	*wall;
 	void	*space;
 	void	*player;
+	void	*enemy;
 	void	*collect;
 	void	*exit;
+	void	*exit_closed;
+	void	*win;
+	void	*lose;
 }	t_textures;
 
 typedef struct s_game
@@ -54,6 +59,8 @@ typedef struct s_game
 	char		*join;
 	int			coin;
 	t_pos		player;
+	t_pos		*enemy;
+	int			enemy_count;
 	t_textures	texture;
 	void		*mlx;
 	void		*mlx_win;
@@ -93,6 +100,10 @@ void	set_height_width(t_game *so_long, char **map);
 void	draw_map(t_game *so_long, char **map, int y, int x);
 void	set_textures(t_game *so_long);
 void	free_textures(t_game *game);
+char	*ft_itoa(int n);
+void	ft_putnbr(int nb);
+void	ft_putchar(char c);
+void	ft_putstr(char *s);
 // moves
 void	ft_putchar(char c);
 void	ft_putstr(char *s);

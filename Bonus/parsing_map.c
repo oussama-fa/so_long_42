@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 04:54:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/04 06:00:59 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 11:36:51 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ int	check_validity_map(char *s, t_game *so_long)
 	int	count_p;
 	int	count_e;
 	int	count_c;
+	int	count_v;
 	int	i;
 
 	i = -1;
 	count_p = 0;
 	count_e = 0;
 	count_c = 0;
+	count_v = 0;
 	while (s[++i])
 	{
 		if (s[i] == 'P')
@@ -44,10 +46,13 @@ int	check_validity_map(char *s, t_game *so_long)
 			count_e++;
 		else if (s[i] == 'C')
 			count_c++;
+		else if (s[i] == 'V')
+			count_v++;
 	}
-	if (count_e != 1 || count_p != 1 || count_c < 1)
+	if (count_e != 1 || count_p != 1 || count_c < 1 || count_v < 1)
 		return (FALSE);
 	so_long->coin = count_c;
+	so_long->enemy_count = count_v;
 	return (TRUE);
 }
 
