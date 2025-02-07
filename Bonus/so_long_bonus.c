@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 13:06:37 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:48:57 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,11 @@ int	main(int ac, char **av)
 		mlx_destroy_display(so_long.mlx);
 		print_err("Closed!\n");
 	}
+	// if (so_long.map_height > 30 || so_long.map_width > 60)
+	// 	print_err("Map To Larg\n");
 	enemy_position(&so_long);
 	set_textures(&so_long);
+	draw_map(&so_long, so_long.map, -1, -1);
 	mlx_key_hook(so_long.mlx_win, key_hook, &so_long);
 	mlx_hook(so_long.mlx_win, 17, 0, dstroy, &so_long);
 	game_loop(&so_long);

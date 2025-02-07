@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 04:30:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 13:02:38 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:09:37 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	move_enemy(t_game *game)
 			if (game->map[new_y][new_x] == 'P')
 				(ft_putstr("You Lose\n"), dstroy(game));
 			game->map[game->enemy[i].y][game->enemy[i].x] = '0';
+			game->map[game->enemy[i].y][game->enemy[i].x] = 'V';
 			game->enemy[i].x = new_x;
 			game->enemy[i].y = new_y;
-			game->map[game->enemy[i].y][game->enemy[i].x] = 'V';
 		}
 	}
 }
@@ -101,6 +101,7 @@ void	move_player(t_game *game, int x, int y)
 		ft_putstr("moves : ");
 		ft_putnbr(moves);
 		ft_putchar('\n');
+		draw_map(game, game->map, player->y, player->x);
 	}
 }
 
@@ -108,7 +109,7 @@ int	game_loop(t_game *game)
 {
 	static int	i;
 
-	if (i == 16000)
+	if (i == 20000)
 	{
 		move_enemy(game);
 		i = 0;
@@ -134,6 +135,6 @@ int	key_hook(int keycode, t_game *game)
 		move_player(game, -1, 0);
 	else if (keycode == 100)
 		move_player(game, 1, 0);
-	draw_map(game, game->map, -1, -1);
+	// draw_map(game, game->map, -1, -1);
 	return (1);
 }

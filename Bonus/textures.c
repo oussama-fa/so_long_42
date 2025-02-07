@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 13:06:15 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:09:06 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ void	draw_map(t_game *so_long, char **map, int y, int x)
 			if (map[y][x] == 'C')
 				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
 					textures.collect, x * 64, y * 64);
-			if (map[y][x] == 'E')
+			if (map[y][x] == 'E' && so_long->coin != 0)
 				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
 					textures.exit_closed, x * 64, y * 64);
+			if (map[y][x] == 'E' && so_long->coin == 0)
+					collect_all_coll(so_long);
 			i = -1;
 			while (++i < so_long->enemy_count)
 			{
@@ -61,11 +63,31 @@ void	draw_map(t_game *so_long, char **map, int y, int x)
 	}
 }
 
+void	collect_all_coll(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while (game->map[++y])
+	{
+		x = -1;
+		while (game->map[y][++x])
+		{
+			if (game->map[y][x] == 'E')
+				mlx_put_image_to_window(game->mlx, game->mlx_win,
+							game->texture.exit, x * 64, y * 64);	
+		}
+	}
+}
+
 void	set_textures(t_game *so_long)
 {
 	int	height;
 	int	width;
 
+	so_long->texture.exit = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/exit.xpm", &height, &width);
 	so_long->texture.velin = mlx_xpm_file_to_image(so_long->mlx,
 			"Bonus/textures/enemy_down.xpm", &height, &width);
 	so_long->texture.wall = mlx_xpm_file_to_image(so_long->mlx,
@@ -89,6 +111,10 @@ void	set_textures(t_game *so_long)
 
 void	free_textures(t_game *game)
 {
+	if (game->texture.secend_wall)
+		mlx_destroy_image(game->mlx, game->texture.secend_wall);
+	if (game->texture.first_wall)
+		mlx_destroy_image(game->mlx, game->texture.first_wall);
 	if (game->texture.wall)
 		mlx_destroy_image(game->mlx, game->texture.wall);
 	if (game->texture.collect)

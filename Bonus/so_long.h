@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:47:28 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 12:58:45 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:49:53 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 # include "../garbage/garbage.h"
 # include "/home/oufarah/minilibx-linux/mlx.h"
 # include <stdio.h> // remove it
-
-# define HEIGHT 70
-# define WIDHT 70
 
 // bool
 # define TRUE 0
@@ -120,6 +117,7 @@ void	move_enemy(t_game *game);
 void	draw_it(t_game *so_long);
 int		key_hook(int keycode, t_game *game);
 int		game_loop(t_game *game);
+void	collect_all_coll(t_game *game);
 
 // error handling
 void	print_err(char *s);
