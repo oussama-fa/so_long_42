@@ -58,7 +58,6 @@ void	draw_map(t_game *so_long, char **map, int y, int x)
 					so_long->texture.velin, so_long->enemy[i].x * 64,
 					so_long->enemy[i].y * 64);
 			}
-			draw_it(so_long);
 		}
 	}
 }
@@ -81,11 +80,32 @@ void	collect_all_coll(t_game *game)
 	}
 }
 
+void	set_player_texter(t_game *so_long)
+{
+	int	height;
+	int	width;
+	so_long->texture.player_down = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/player_down.xpm", &height, &width);
+	so_long->texture.player_left = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/player_left.xpm", &height, &width);
+	so_long->texture.player_right = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/player_right.xpm", &height, &width);
+	so_long->texture.player_up = mlx_xpm_file_to_image(so_long->mlx,
+			"Bonus/textures/player_up.xpm", &height, &width);
+	if (!so_long->texture.player_left || !so_long->texture.player_right
+		|| !so_long->texture.player_down || !so_long->texture.player_up)
+	{
+		ft_putstr("Error in Textures\n");
+		dstroy(so_long);
+	}
+}
+
 void	set_textures(t_game *so_long)
 {
 	int	height;
 	int	width;
 
+	set_player_texter(so_long);
 	so_long->texture.exit = mlx_xpm_file_to_image(so_long->mlx,
 			"Bonus/textures/exit.xpm", &height, &width);
 	so_long->texture.velin = mlx_xpm_file_to_image(so_long->mlx,
@@ -104,7 +124,7 @@ void	set_textures(t_game *so_long)
 		|| !so_long->texture.exit_closed || !so_long->texture.player
 		|| !so_long->texture.space || !so_long->texture.velin)
 	{
-		ft_putstr("Error\n");
+		ft_putstr("Error in Textures\n");
 		dstroy(so_long);
 	}
 }

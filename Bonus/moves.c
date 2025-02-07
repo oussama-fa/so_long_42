@@ -65,9 +65,11 @@ void	move_enemy(t_game *game)
 			if (game->map[new_y][new_x] == 'P')
 				(ft_putstr("You Lose\n"), dstroy(game));
 			game->map[game->enemy[i].y][game->enemy[i].x] = '0';
-			game->map[game->enemy[i].y][game->enemy[i].x] = 'V';
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->texture.space, game->enemy[i].x, game->enemy[i].y);
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->texture.velin, new_x, new_y);
 			game->enemy[i].x = new_x;
 			game->enemy[i].y = new_y;
+			game->map[game->enemy[i].y][game->enemy[i].x] = 'V';
 		}
 	}
 }
@@ -84,6 +86,26 @@ void	move_player(t_game *game, int x, int y)
 	map = game->map;
 	new_x = player->x + x;
 	new_y = player->y + y;
+	if (x == 0 && y == -1)
+		game->texture.player = game->texture.player_up; 
+	else if (x == 0 && y == 1)
+		game->texture.player = game->texture.player_down; 
+	else if (x == -1 && y == 0)
+		game->texture.player = game->texture.player_left; 
+	else if (x == 1 && y == 0)
+		game->texture.player = game->texture.player_right; 
+	// if (x == 0 && y == -1)
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win,
+	// 		game->texture.player_up, x * 64, y * 64);
+	// else if (x == 0 && y == 1)
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win,
+	// 				game->texture.player_down, x * 64, y * 64);
+	// else if (x == -1 && y == 0)
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win,
+	// 				game->texture.player_left, x * 64, y * 64);
+	// else if (x == 1 && y == 0)
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win,
+	// 				game->texture.player_right, x * 64, y * 64);
 	if (map[new_y][new_x] == 'E' && game->coin <= 0)
 		(ft_putstr("You Win!\n"), dstroy(game));
 	if (map[new_y][new_x] == 'V')
@@ -94,22 +116,29 @@ void	move_player(t_game *game, int x, int y)
 			game->coin--;
 		map[player->y][player->x] = '0';
 		map[new_y][new_x] = 'P';
-		player->x = new_x;
-		player->y = new_y;
 		moves++;
 		game->moves = moves;
 		ft_putstr("moves : ");
 		ft_putnbr(moves);
 		ft_putchar('\n');
-		draw_map(game, game->map, player->y, player->x);
+		// printf("%d, %d\n", player->x, new_x);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->texture.space, player->x, player->y);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->texture.player, new_x, new_y);
+		player->x = new_x;
+		player->y = new_y;
+		// draw_map(game, game->map, player->y, player->x);
 	}
 }
+
+// void	update(t_game *game, int new_x, int new_y, void *img)
+// {
+
+// }
 
 int	game_loop(t_game *game)
 {
 	static int	i;
-
-	if (i == 20000)
+	if (i == 1000)
 	{
 		move_enemy(game);
 		i = 0;
@@ -117,6 +146,7 @@ int	game_loop(t_game *game)
 	}
 	else
 		i++;
+	draw_it(game);
 	return (0);
 }
 
@@ -135,6 +165,6 @@ int	key_hook(int keycode, t_game *game)
 		move_player(game, -1, 0);
 	else if (keycode == 100)
 		move_player(game, 1, 0);
-	// draw_map(game, game->map, -1, -1);
+	draw_map(game, game->map, -1, -1);
 	return (1);
 }

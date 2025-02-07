@@ -52,6 +52,8 @@ int	main(int ac, char **av)
 	if (!so_long.mlx)
 		print_err("Can't Open\n");
 	set_height_width(&so_long, so_long.map);
+	if (so_long.map_height > 30 || so_long.map_width > 60)
+		print_err("Map To Larg\n");
 	so_long.mlx_win = mlx_new_window(so_long.mlx, so_long.map_width * 64,
 			so_long.map_height * 64, "so_long");
 	if (!so_long.mlx_win)
@@ -60,8 +62,6 @@ int	main(int ac, char **av)
 		mlx_destroy_display(so_long.mlx);
 		print_err("Closed!\n");
 	}
-	// if (so_long.map_height > 30 || so_long.map_width > 60)
-	// 	print_err("Map To Larg\n");
 	enemy_position(&so_long);
 	set_textures(&so_long);
 	draw_map(&so_long, so_long.map, -1, -1);
@@ -69,6 +69,7 @@ int	main(int ac, char **av)
 	mlx_hook(so_long.mlx_win, 17, 0, dstroy, &so_long);
 	game_loop(&so_long);
 	mlx_loop_hook(so_long.mlx, game_loop, &so_long);
+	// draw_it(&so_long);
 	mlx_loop(so_long.mlx);
 	free_textures(&so_long);
 	// free enemy position

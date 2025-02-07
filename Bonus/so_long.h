@@ -39,12 +39,14 @@ typedef struct s_textures
 	void	*wall;
 	void	*space;
 	void	*player;
+	void	*player_left;
+	void	*player_right;
+	void	*player_up;
+	void	*player_down;
 	void	*velin;
 	void	*collect;
 	void	*exit;
 	void	*exit_closed;
-	void	*win;
-	void	*lose;
 	void	*first_wall;
 	void	*secend_wall;
 }	t_textures;
@@ -100,6 +102,7 @@ char	**ft_split(char const *s, char c);
 // textures
 void	set_height_width(t_game *so_long, char **map);
 void	draw_map(t_game *so_long, char **map, int y, int x);
+void	set_player_texter(t_game *so_long);
 void	set_textures(t_game *so_long);
 void	free_textures(t_game *game);
 char	*ft_itoa(int n);
