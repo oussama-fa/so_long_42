@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 04:54:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/06 11:36:51 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 12:48:36 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ int	check_validity_map(char *s, t_game *so_long)
 	int	count_v;
 	int	i;
 
-	i = -1;
+	1 && (i = -1, count_c = 0, count_e = 0);
 	count_p = 0;
-	count_e = 0;
-	count_c = 0;
 	count_v = 0;
 	while (s[++i])
 	{

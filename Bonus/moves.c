@@ -6,18 +6,17 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 04:30:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 12:33:24 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 13:02:38 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
-void enemy_position(t_game *game)
+void	enemy_position(t_game *game)
 {
-	int i;
-	int y;
-	int x;
+	int	i;
+	int	y;
+	int	x;
 
 	i = 0;
 	y = -1;
@@ -37,20 +36,19 @@ void enemy_position(t_game *game)
 	}
 }
 
-void move_enemy(t_game *game)
+void	move_enemy(t_game *game)
 {
-	int i;
-	int new_x;
-	int new_y;
-	int dir;
-	i = -1;
+	int	i;
+	int	new_x;
+	int	new_y;
+	int	dir;
 
+	i = -1;
 	while (++i < game->enemy_count)
 	{
 		new_x = game->enemy[i].x;
 		new_y = game->enemy[i].y;
 		dir = rand() % 4;
-
 		if (dir == 0)
 			new_x--;
 		else if (dir == 1)
@@ -59,9 +57,10 @@ void move_enemy(t_game *game)
 			new_y--;
 		else if (dir == 3)
 			new_y++;
-		if (new_x >= 0 && new_x < game->map_width &&
-				new_y >= 0 && new_y < game->map_height &&
-				(game->map[new_y][new_x] != '1' && game->map[new_y][new_x] != 'C' && game->map[new_y][new_x] != 'E'))
+		if (new_x >= 0 && new_x < game->map_width && new_y >= 0
+			&& new_y < game->map_height && (game->map[new_y][new_x] != '1'
+			&& game->map[new_y][new_x] != 'C'
+			&& game->map[new_y][new_x] != 'E'))
 		{
 			if (game->map[new_y][new_x] == 'P')
 				(ft_putstr("You Lose\n"), dstroy(game));
@@ -73,13 +72,13 @@ void move_enemy(t_game *game)
 	}
 }
 
-void move_player(t_game *game, int x, int y)
+void	move_player(t_game *game, int x, int y)
 {
-	static int moves;
-	t_pos *player;
-	char **map;
-	int new_x;
-	int new_y;
+	static int	moves;
+	t_pos		*player;
+	char		**map;
+	int			new_x;
+	int			new_y;
 
 	player = &game->player;
 	map = game->map;
@@ -102,13 +101,12 @@ void move_player(t_game *game, int x, int y)
 		ft_putstr("moves : ");
 		ft_putnbr(moves);
 		ft_putchar('\n');
-		// free pointer itoa
 	}
 }
 
-int game_loop(t_game *game)
+int	game_loop(t_game *game)
 {
-	static int i;
+	static int	i;
 
 	if (i == 16000)
 	{
@@ -121,7 +119,7 @@ int game_loop(t_game *game)
 	return (0);
 }
 
-int key_hook(int keycode, t_game *game)
+int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == 65307)
 	{
