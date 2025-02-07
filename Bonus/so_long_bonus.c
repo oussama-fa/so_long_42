@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 14:48:57 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 21:04:01 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,7 @@ void	draw_it(t_game *so_long)
 	so_long->texture.secend_wall = mlx_xpm_file_to_image(so_long->mlx,
 			"Bonus/textures/move_2.xpm", &width, &height);
 	if (!so_long->texture.first_wall || !so_long->texture.secend_wall)
-	{
-		print_err("Failed to load textures\n");
 		dstroy(so_long);
-	}
 	mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
 		so_long->texture.first_wall, 0 * 64, 0 * 64);
 	mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,

@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:56:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 19:03:21 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 21:01:57 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	player_do(t_game *game, int new_y, int new_x)
 
 	player = &game->player;
 	if (game->map[new_y][new_x] == 'E' && game->coin <= 0)
-		(ft_putstr("You Win!\n"), dstroy(game));
+		(ft_putstr("You Win!\n"), dstroy(game), ft_malloc(0, CLEAR));
 	if (game->map[new_y][new_x] == 'V')
-		(ft_putstr("You Lose\n"), dstroy(game));
+		(ft_putstr("You Lose\n"), dstroy(game), ft_malloc(0, CLEAR));
 	if (game->map[new_y][new_x] != '1' && game->map[new_y][new_x] != 'E')
 	{
 		if (game->map[new_y][new_x] == 'C')

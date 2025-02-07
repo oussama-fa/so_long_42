@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 14:09:06 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 21:05:24 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,7 @@ void	set_textures(t_game *so_long)
 			"Bonus/textures/background.xpm", &height, &width);
 	if (!so_long->texture.wall || !so_long->texture.collect
 		|| !so_long->texture.exit_closed || !so_long->texture.player
-		|| !so_long->texture.space || !so_long->texture.velin)
-	{
-		ft_putstr("Error in Textures\n");
+		|| !so_long->texture.space || !so_long->texture.velin
+		|| !so_long->texture.exit)
 		dstroy(so_long);
-	}
 }
