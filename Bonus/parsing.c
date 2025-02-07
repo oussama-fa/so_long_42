@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 14:20:48 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 00:40:14 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,14 @@ void	parsing(t_game *so_long, char *av)
 	check_valid_path(map_cpy, 0, 0);
 	so_long->map = pars.map;
 	so_long->player = cor;
+}
+
+int	dstroy(t_game *so_long)
+{
+	free_textures(so_long);
+	mlx_destroy_display(so_long->mlx);
+	free(so_long->mlx);
+	ft_malloc(0, CLEAR);
+	exit(1);
+	return (1);
 }

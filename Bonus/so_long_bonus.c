@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 21:04:01 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 00:40:22 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,40 +74,35 @@ void	draw_it(t_game *so_long)
 	mlx_string_put(so_long->mlx, so_long->mlx_win,
 		15, 40, 0xFFFFFF, "M O V E S :");
 	mlx_string_put(so_long->mlx, so_long->mlx_win, 100, 40, 0xFF0000, mov);
+	mlx_destroy_image(so_long->mlx, so_long->texture.first_wall);
+	mlx_destroy_image(so_long->mlx, so_long->texture.secend_wall);
+}
+
+void	destroy_and_free(void *mlx, void *ptr)
+{
+	mlx_destroy_image(mlx, ptr);
 }
 
 void	free_textures(t_game *game)
 {
 	if (game->texture.player_down)
-		mlx_destroy_image(game->mlx, game->texture.player_down);
+		destroy_and_free(game->mlx, game->texture.player_down);
 	if (game->texture.player_up)
-		mlx_destroy_image(game->mlx, game->texture.player_up);
+		destroy_and_free(game->mlx, game->texture.player_up);
 	if (game->texture.player_right)
-		mlx_destroy_image(game->mlx, game->texture.player_right);
+		destroy_and_free(game->mlx, game->texture.player_right);
 	if (game->texture.player_left)
-		mlx_destroy_image(game->mlx, game->texture.player_left);
-	if (game->texture.secend_wall)
-		mlx_destroy_image(game->mlx, game->texture.secend_wall);
-	if (game->texture.first_wall)
-		mlx_destroy_image(game->mlx, game->texture.first_wall);
+		destroy_and_free(game->mlx, game->texture.player_left);
 	if (game->texture.wall)
-		mlx_destroy_image(game->mlx, game->texture.wall);
+		destroy_and_free(game->mlx, game->texture.wall);
 	if (game->texture.collect)
-		mlx_destroy_image(game->mlx, game->texture.collect);
+		destroy_and_free(game->mlx, game->texture.collect);
 	if (game->texture.exit_closed)
-		mlx_destroy_image(game->mlx, game->texture.exit_closed);
+		destroy_and_free(game->mlx, game->texture.exit_closed);
+	if (game->texture.exit)
+		destroy_and_free(game->mlx, game->texture.exit);
 	if (game->texture.space)
-		mlx_destroy_image(game->mlx, game->texture.space);
+		destroy_and_free(game->mlx, game->texture.space);
 	if (game->mlx_win)
 		mlx_destroy_window(game->mlx, game->mlx_win);
-}
-
-int	dstroy(t_game *so_long)
-{
-	free_textures(so_long);
-	mlx_destroy_display(so_long->mlx);
-	free(so_long->mlx);
-	ft_malloc(0, CLEAR);
-	exit(1);
-	return (1);
 }
