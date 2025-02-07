@@ -6,11 +6,40 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/06 11:36:59 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/07 12:38:20 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
+
+void	draw_it(t_game *so_long)
+{
+	char	*mov;
+	int	height;
+	int	width;
+
+	so_long->texture.first_wall = mlx_xpm_file_to_image(so_long->mlx, "Bonus/textures/move_1.xpm", &width, &height);
+	so_long->texture.secend_wall = mlx_xpm_file_to_image(so_long->mlx, "Bonus/textures/move_2.xpm", &width, &height);
+
+	if (!so_long->texture.first_wall || !so_long->texture.secend_wall)
+	{
+		print_err("Failed to load textures\n");
+		dstroy(so_long);
+		return;
+	}
+
+	mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
+					so_long->texture.first_wall, 0 * 64, 0 * 64);
+	mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
+					so_long->texture.secend_wall, 1 * 64, 0 * 64);
+
+	mov = ft_itoa(so_long->moves);
+	if (!mov)
+		return;
+	mlx_string_put(so_long->mlx, so_long->mlx_win, 15, 40, 0xFFFFFF, "M O V E S :");
+	mlx_string_put(so_long->mlx, so_long->mlx_win, 115, 40, 0xFF0000, mov);
+}
 
 int	main(int ac, char **av)
 {
@@ -32,11 +61,16 @@ int	main(int ac, char **av)
 		mlx_destroy_display(so_long.mlx);
 		print_err("Closed!\n");
 	}
+	enemy_position(&so_long);
 	set_textures(&so_long);
+	
 	mlx_key_hook(so_long.mlx_win, key_hook, &so_long);
 	mlx_hook(so_long.mlx_win, 17, 0, dstroy, &so_long);
+	game_loop(&so_long);
+	mlx_loop_hook(so_long.mlx, game_loop, &so_long);
 	mlx_loop(so_long.mlx);
 	free_textures(&so_long);
+	// free enemy position
 	mlx_destroy_display(so_long.mlx);
 	ft_malloc(0, CLEAR);
 }

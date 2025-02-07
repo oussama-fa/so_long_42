@@ -6,17 +6,17 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/06 10:31:38 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/06 21:23:41 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*skip_last(char *s)
+char *skip_last(char *s)
 {
-	int		len;
-	int		i;
-	char	*ret;
+	int len;
+	int i;
+	char *ret;
 
 	if (!s)
 		return (NULL);
@@ -32,9 +32,9 @@ char	*skip_last(char *s)
 	return (ret);
 }
 
-int	checkline_validity(char *s)
+int checkline_validity(char *s)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s[i])
@@ -46,11 +46,11 @@ int	checkline_validity(char *s)
 	return (1);
 }
 
-char	*mini_pars(char *av)
+char *mini_pars(char *av)
 {
-	t_game	pars;
-	int		fd;
-	char	*line;
+	t_game pars;
+	int fd;
+	char *line;
 
 	if (check_filename(av))
 		print_err("Invalide Filename\n");
@@ -62,7 +62,7 @@ char	*mini_pars(char *av)
 		(close(fd)), (print_err("Nothing To Read\n"));
 	pars.join = ft_strdup("");
 	while (line)
-	{		
+	{
 		pars.join = ft_strjoin(pars.join, line);
 		line = get_next_line(fd);
 		if (line && !checkline_validity(line))
@@ -75,12 +75,12 @@ char	*mini_pars(char *av)
 	return (pars.join);
 }
 
-void	parsing(t_game *so_long, char *av)
+void parsing(t_game *so_long, char *av)
 {
-	t_game	pars;
-	t_pos	cor;
-	char	**map_cpy;
-	int		rows;
+	t_game pars;
+	t_pos cor;
+	char **map_cpy;
+	int rows;
 
 	pars.join = mini_pars(av);
 	while (*pars.join == '\n')
