@@ -69,7 +69,6 @@ int	main(int ac, char **av)
 	mlx_hook(so_long.mlx_win, 17, 0, dstroy, &so_long);
 	game_loop(&so_long);
 	mlx_loop_hook(so_long.mlx, game_loop, &so_long);
-	// draw_it(&so_long);
 	mlx_loop(so_long.mlx);
 	free_textures(&so_long);
 	// free enemy position

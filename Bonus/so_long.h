@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include "../garbage/garbage.h"
 # include "/home/oufarah/minilibx-linux/mlx.h"
-# include <stdio.h> // remove it
 
 // bool
 # define TRUE 0

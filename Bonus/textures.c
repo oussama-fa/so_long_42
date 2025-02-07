@@ -50,7 +50,7 @@ void	draw_map(t_game *so_long, char **map, int y, int x)
 				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
 					textures.exit_closed, x * 64, y * 64);
 			if (map[y][x] == 'E' && so_long->coin == 0)
-					collect_all_coll(so_long);
+				collect_all_coll(so_long);
 			i = -1;
 			while (++i < so_long->enemy_count)
 			{
@@ -75,7 +75,7 @@ void	collect_all_coll(t_game *game)
 		{
 			if (game->map[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->mlx_win,
-							game->texture.exit, x * 64, y * 64);	
+					game->texture.exit, x * 64, y * 64);
 		}
 	}
 }
@@ -84,6 +84,7 @@ void	set_player_texter(t_game *so_long)
 {
 	int	height;
 	int	width;
+
 	so_long->texture.player_down = mlx_xpm_file_to_image(so_long->mlx,
 			"Bonus/textures/player_down.xpm", &height, &width);
 	so_long->texture.player_left = mlx_xpm_file_to_image(so_long->mlx,
