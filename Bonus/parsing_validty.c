@@ -63,3 +63,14 @@ t_pos	get_player_pos(char **map)
 	}
 	return (cor);
 }
+
+void	set_height_width(t_game *so_long, char **map)
+{
+	int	y;
+
+	so_long->map_width = ft_strlen(*map);
+	y = 0;
+	while (map[y])
+		y++;
+	so_long->map_height = y;
+}

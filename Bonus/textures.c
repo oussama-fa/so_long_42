@@ -12,15 +12,25 @@
 
 #include "so_long.h"
 
-void	set_height_width(t_game *so_long, char **map)
+void	draw(t_game *so_long, char **map, int y, int x)
 {
-	int	y;
+	t_textures	textures;
 
-	so_long->map_width = ft_strlen(*map);
-	y = 0;
-	while (map[y])
-		y++;
-	so_long->map_height = y;
+	textures = so_long->texture;
+	if (map[y][x] == '1')
+		mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
+			textures.wall, x * 64, y * 64);
+	if (map[y][x] == 'P')
+		mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
+			textures.player, x * 64, y * 64);
+	if (map[y][x] == 'C')
+		mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
+			textures.collect, x * 64, y * 64);
+	if (map[y][x] == 'E' && so_long->coin != 0)
+		mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
+			textures.exit_closed, x * 64, y * 64);
+	if (map[y][x] == 'E' && so_long->coin == 0)
+		collect_all_coll(so_long);
 }
 
 void	draw_map(t_game *so_long, char **map, int y, int x)
@@ -37,20 +47,7 @@ void	draw_map(t_game *so_long, char **map, int y, int x)
 		{
 			mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
 				textures.space, x * 64, y * 64);
-			if (map[y][x] == '1')
-				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
-					textures.wall, x * 64, y * 64);
-			if (map[y][x] == 'P')
-				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
-					textures.player, x * 64, y * 64);
-			if (map[y][x] == 'C')
-				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
-					textures.collect, x * 64, y * 64);
-			if (map[y][x] == 'E' && so_long->coin != 0)
-				mlx_put_image_to_window(so_long->mlx, so_long->mlx_win,
-					textures.exit_closed, x * 64, y * 64);
-			if (map[y][x] == 'E' && so_long->coin == 0)
-				collect_all_coll(so_long);
+			draw(so_long, so_long->map, y, x);
 			i = -1;
 			while (++i < so_long->enemy_count)
 			{
@@ -128,34 +125,4 @@ void	set_textures(t_game *so_long)
 		ft_putstr("Error in Textures\n");
 		dstroy(so_long);
 	}
-}
-
-void	free_textures(t_game *game)
-{
-	if (game->texture.secend_wall)
-		mlx_destroy_image(game->mlx, game->texture.secend_wall);
-	if (game->texture.first_wall)
-		mlx_destroy_image(game->mlx, game->texture.first_wall);
-	if (game->texture.wall)
-		mlx_destroy_image(game->mlx, game->texture.wall);
-	if (game->texture.collect)
-		mlx_destroy_image(game->mlx, game->texture.collect);
-	if (game->texture.exit_closed)
-		mlx_destroy_image(game->mlx, game->texture.exit_closed);
-	if (game->texture.player)
-		mlx_destroy_image(game->mlx, game->texture.player);
-	if (game->texture.space)
-		mlx_destroy_image(game->mlx, game->texture.space);
-	if (game->mlx_win)
-		mlx_destroy_window(game->mlx, game->mlx_win);
-}
-
-int	dstroy(t_game *so_long)
-{
-	free_textures(so_long);
-	mlx_destroy_display(so_long->mlx);
-	free(so_long->mlx);
-	ft_malloc(0, CLEAR);
-	exit(1);
-	return (1);
 }

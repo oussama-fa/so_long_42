@@ -11,7 +11,46 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
+
+void	game_logic(t_game *so_long)
+{
+	enemy_position(so_long);
+	set_textures(so_long);
+	draw_map(so_long, so_long->map, -1, -1);
+	mlx_key_hook(so_long->mlx_win, key_hook, so_long);
+	mlx_hook(so_long->mlx_win, 17, 0, dstroy, so_long);
+	game_loop(so_long);
+	mlx_loop_hook(so_long->mlx, game_loop, so_long);
+	mlx_loop(so_long->mlx);
+}
+
+int	main(int ac, char **av)
+{
+	t_game	so_long;
+
+	so_long.coin = 0;
+	if (ac != 2)
+		print_err("Invalide Input\n");
+	parsing(&so_long, av[1]);
+	so_long.mlx = mlx_init();
+	if (!so_long.mlx)
+		print_err("Can't Open\n");
+	set_height_width(&so_long, so_long.map);
+	if (so_long.map_height > 30 || so_long.map_width > 60)
+		print_err("Map To Larg\n");
+	so_long.mlx_win = mlx_new_window(so_long.mlx, so_long.map_width * 64,
+			so_long.map_height * 64, "so_long");
+	if (!so_long.mlx_win)
+	{
+		mlx_destroy_window(so_long.mlx, so_long.mlx_win);
+		mlx_destroy_display(so_long.mlx);
+		print_err("Closed!\n");
+	}
+	game_logic(&so_long);
+	mlx_destroy_display(so_long.mlx);
+	free_textures(&so_long);
+	ft_malloc(0, CLEAR);
+}
 
 void	draw_it(t_game *so_long)
 {
@@ -40,38 +79,38 @@ void	draw_it(t_game *so_long)
 	mlx_string_put(so_long->mlx, so_long->mlx_win, 100, 40, 0xFF0000, mov);
 }
 
-int	main(int ac, char **av)
+void	free_textures(t_game *game)
 {
-	t_game	so_long;
+	if (game->texture.player_down)
+		mlx_destroy_image(game->mlx, game->texture.player_down);
+	if (game->texture.player_up)
+		mlx_destroy_image(game->mlx, game->texture.player_up);
+	if (game->texture.player_right)
+		mlx_destroy_image(game->mlx, game->texture.player_right);
+	if (game->texture.player_left)
+		mlx_destroy_image(game->mlx, game->texture.player_left);
+	if (game->texture.secend_wall)
+		mlx_destroy_image(game->mlx, game->texture.secend_wall);
+	if (game->texture.first_wall)
+		mlx_destroy_image(game->mlx, game->texture.first_wall);
+	if (game->texture.wall)
+		mlx_destroy_image(game->mlx, game->texture.wall);
+	if (game->texture.collect)
+		mlx_destroy_image(game->mlx, game->texture.collect);
+	if (game->texture.exit_closed)
+		mlx_destroy_image(game->mlx, game->texture.exit_closed);
+	if (game->texture.space)
+		mlx_destroy_image(game->mlx, game->texture.space);
+	if (game->mlx_win)
+		mlx_destroy_window(game->mlx, game->mlx_win);
+}
 
-	so_long.coin = 0;
-	if (ac != 2)
-		print_err("Invalide Input\n");
-	parsing(&so_long, av[1]);
-	so_long.mlx = mlx_init();
-	if (!so_long.mlx)
-		print_err("Can't Open\n");
-	set_height_width(&so_long, so_long.map);
-	if (so_long.map_height > 30 || so_long.map_width > 60)
-		print_err("Map To Larg\n");
-	so_long.mlx_win = mlx_new_window(so_long.mlx, so_long.map_width * 64,
-			so_long.map_height * 64, "so_long");
-	if (!so_long.mlx_win)
-	{
-		mlx_destroy_window(so_long.mlx, so_long.mlx_win);
-		mlx_destroy_display(so_long.mlx);
-		print_err("Closed!\n");
-	}
-	enemy_position(&so_long);
-	set_textures(&so_long);
-	draw_map(&so_long, so_long.map, -1, -1);
-	mlx_key_hook(so_long.mlx_win, key_hook, &so_long);
-	mlx_hook(so_long.mlx_win, 17, 0, dstroy, &so_long);
-	game_loop(&so_long);
-	mlx_loop_hook(so_long.mlx, game_loop, &so_long);
-	mlx_loop(so_long.mlx);
-	free_textures(&so_long);
-	// free enemy position
-	mlx_destroy_display(so_long.mlx);
+int	dstroy(t_game *so_long)
+{
+	free_textures(so_long);
+	mlx_destroy_display(so_long->mlx);
+	free(so_long->mlx);
 	ft_malloc(0, CLEAR);
+	exit(1);
+	return (1);
 }
