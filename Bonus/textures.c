@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 21:05:24 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 16:30:25 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,7 @@ void	set_textures(t_game *so_long)
 			"Bonus/textures/collect.xpm", &height, &width);
 	so_long->texture.exit_closed = mlx_xpm_file_to_image(so_long->mlx,
 			"Bonus/textures/exit_closed.xpm", &height, &width);
-	so_long->texture.player = mlx_xpm_file_to_image(so_long->mlx,
-			"Bonus/textures/player.xpm", &height, &width);
+	so_long->texture.player = so_long->texture.player_left;
 	so_long->texture.space = mlx_xpm_file_to_image(so_long->mlx,
 			"Bonus/textures/background.xpm", &height, &width);
 	if (!so_long->texture.wall || !so_long->texture.collect

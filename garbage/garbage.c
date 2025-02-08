@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:52:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/03 01:11:11 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 16:05:11 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ t_garbage	*ft_lstnew(void *adress)
 
 void	clear_it(t_garbage *garbage)
 {
-	void	*clear;
+	t_garbage	*clear;
 
 	while (garbage)
 	{
-		clear = garbage;
+		clear = garbage->next;
 		free(garbage->address);
-		garbage = garbage->next;
-		free(clear);
+		free(garbage);
+		garbage = clear;
 	}
 }
 

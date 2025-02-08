@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 12:25:40 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 16:30:02 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	free_textures(t_game *game)
 		destroy_and_free(game->mlx, game->texture.exit);
 	if (game->texture.space)
 		destroy_and_free(game->mlx, game->texture.space);
+	if (game->texture.velin)
+		destroy_and_free(game->mlx, game->texture.velin);
 	if (game->mlx_win)
 		mlx_destroy_window(game->mlx, game->mlx_win);
 }

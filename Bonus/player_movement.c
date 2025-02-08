@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:56:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 12:04:24 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 16:29:05 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,6 @@ void	player_do(t_game *game, int new_y, int new_x)
 	}
 }
 
-void	free_in_first_time(void *mlx, void *img)
-{
-	static int	i;
-
-	if (!i)
-		mlx_destroy_image(mlx, img);
-	i++;
-}
-
 void	move_player(t_game *game, int x, int y)
 {
 	t_pos		*player;
@@ -58,7 +49,6 @@ void	move_player(t_game *game, int x, int y)
 	map = game->map;
 	new_x = player->x + x;
 	new_y = player->y + y;
-	free_in_first_time(game->mlx, game->texture.player);
 	if (x == 0 && y == -1)
 		game->texture.player = game->texture.player_up;
 	else if (x == 0 && y == 1)
