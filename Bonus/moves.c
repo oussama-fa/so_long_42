@@ -6,11 +6,11 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 04:30:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 20:53:43 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 22:22:41 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	enemy_position(t_game *game)
 {

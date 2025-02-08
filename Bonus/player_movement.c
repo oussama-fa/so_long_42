@@ -6,11 +6,11 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:56:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 16:29:05 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 22:22:53 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	player_do(t_game *game, int new_y, int new_x)
 {

@@ -6,7 +6,7 @@
 #    By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 20:44:58 by oufarah           #+#    #+#              #
-#    Updated: 2025/02/08 16:29:40 by oufarah          ###   ########.fr        #
+#    Updated: 2025/02/08 22:23:18 by oufarah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ RM = rm -rf
 
 INCS = Mandatory/so_long.h
 
-INCS_B = Bonus/so_long.h
+INCS_B = Bonus/so_long_bonus.h
 
 SRC =  Mandatory/get_next_line.c Mandatory/get_next_line_utils.c Mandatory/parsing.c Mandatory/so_long.c \
        Mandatory/parsing_utils.c Mandatory/ft_split.c Mandatory/parsing_map.c Mandatory/parsing_validty.c \

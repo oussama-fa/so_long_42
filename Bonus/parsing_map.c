@@ -6,11 +6,11 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 04:54:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/07 12:48:36 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 22:22:45 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	check_line(char *s)
 {

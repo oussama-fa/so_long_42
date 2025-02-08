@@ -6,11 +6,11 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 18:03:39 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/01 22:03:08 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 22:22:30 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static size_t	cnt_w(char *str, char c)
 {

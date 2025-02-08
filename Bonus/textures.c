@@ -6,11 +6,11 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:05:09 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 16:30:25 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 22:23:09 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	draw(t_game *so_long, char **map, int y, int x)
 {

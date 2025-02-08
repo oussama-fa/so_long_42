@@ -6,11 +6,11 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:33:26 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 00:16:15 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 22:22:25 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_putchar(char c)
 {
