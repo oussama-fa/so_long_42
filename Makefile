@@ -6,7 +6,7 @@
 #    By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 20:44:58 by oufarah           #+#    #+#              #
-#    Updated: 2025/02/08 22:23:18 by oufarah          ###   ########.fr        #
+#    Updated: 2025/02/08 23:33:34 by oufarah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,10 @@ bonus : $(NAME_B)
 $(NAME_B): $(OBJS_B)
 	$(CC) $(FLAGS) $(OBJS_B) $(MLX_FLAGS) -o $(NAME_B) 
 
-%.o: %.c $(INCS) $(INCS_B)
+%.o: %.c $(INCS)
+	$(CC) $(FLAGS) -I/home/oufarah/minilibx-linux -c $< -o $@
+
+Bonus/%.o: Bonus/%.c $(INCS_B)
 	$(CC) $(FLAGS) -I/home/oufarah/minilibx-linux -c $< -o $@
 
 clean:
