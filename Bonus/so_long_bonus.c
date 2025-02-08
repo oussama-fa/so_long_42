@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:48:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 00:40:22 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/02/08 12:25:40 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int ac, char **av)
 		mlx_destroy_display(so_long.mlx);
 		print_err("Closed!\n");
 	}
+	so_long.moves = 0;
 	game_logic(&so_long);
 	mlx_destroy_display(so_long.mlx);
 	free_textures(&so_long);
