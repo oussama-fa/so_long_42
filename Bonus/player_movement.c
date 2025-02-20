@@ -14,7 +14,7 @@
 
 void	player_do(t_game *game, int new_y, int new_x)
 {
-	int static	moves;
+	static	int moves;
 	t_pos		*player;
 
 	player = &game->player;
@@ -41,12 +41,10 @@ void	player_do(t_game *game, int new_y, int new_x)
 void	move_player(t_game *game, int x, int y)
 {
 	t_pos		*player;
-	char		**map;
 	int			new_x;
 	int			new_y;
 
 	player = &game->player;
-	map = game->map;
 	new_x = player->x + x;
 	new_y = player->y + y;
 	if (x == 0 && y == -1)
