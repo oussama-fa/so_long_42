@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:49:23 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 22:22:51 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/06/19 18:52:10 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*mini_pars(char *av)
 		if (line && !checkline_validity(line))
 		{
 			close(fd);
-			print_err("Invalide Map\n");
+			print_err("Invalide Map\nThe Map Need :1, 0, C, P, E or V\n");
 		}
 	}
 	close(fd);
@@ -87,14 +87,14 @@ void	parsing(t_game *so_long, char *av)
 		pars.join++;
 	pars.join = skip_last(pars.join);
 	if (check_line(pars.join) || check_validity_map(pars.join, so_long))
-		print_err("Invalide Map\n");
+		print_err("Invalide Map !\nProblem in line or Validity MAP\n");
 	pars.map = ft_split(pars.join, '\n');
 	map_cpy = ft_split(pars.join, '\n');
 	rows = 0;
 	while (pars.map[rows])
 		rows++;
 	if (!is_map_valid(pars.map, rows))
-		print_err("Invalide Map\n");
+		print_err("Invalide Map\nProblem in Rows or line is not The same tall\n");
 	cor = get_player_pos(map_cpy);
 	flood_fill(map_cpy, cor.y, cor.x);
 	check_valid_path(map_cpy, 0, 0);

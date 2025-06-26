@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 01:28:24 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 22:22:49 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/06/19 19:05:15 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	check_valid_path(char **map_cpy, int y, int x)
 		while (map_cpy[y][tmpx])
 		{
 			if (map_cpy[y][tmpx] == 'C' || map_cpy[y][tmpx] == 'E')
-				return (print_err("Invalide Map\n"));
+				return (print_err("Invalide Map \n\
+The Problem in Invalide PATH\n"));
 			tmpx++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 04:30:15 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 22:22:41 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/06/19 18:58:49 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	enemy(t_game *game, int new_y, int new_x, int i)
 		&& game->map[new_y][new_x] != 'E'))
 	{
 		if (game->map[new_y][new_x] == 'P')
-			(ft_putstr("You Lose\n"), dstroy(game));
+			(ft_putstr("<<< You Lose >>>\n"), dstroy(game));
 		game->map[game->enemy[i].y][game->enemy[i].x] = '0';
 		mlx_put_image_to_window(game->mlx, game->mlx_win,
 			game->texture.space, game->enemy[i].x, game->enemy[i].y);

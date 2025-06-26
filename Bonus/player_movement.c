@@ -6,7 +6,7 @@
 /*   By: oufarah <oufarah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:56:54 by oufarah           #+#    #+#             */
-/*   Updated: 2025/02/08 22:22:53 by oufarah          ###   ########.fr       */
+/*   Updated: 2025/06/19 19:01:23 by oufarah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	player_do(t_game *game, int new_y, int new_x)
 {
-	static	int moves;
+	static int	moves;
 	t_pos		*player;
 
 	player = &game->player;
 	if (game->map[new_y][new_x] == 'E' && game->coin <= 0)
-		(ft_putstr("You Win!\n"), dstroy(game), ft_malloc(0, CLEAR));
+		(ft_putstr("<<< You Win! >>>\n"), dstroy(game), ft_malloc(0, CLEAR));
 	if (game->map[new_y][new_x] == 'V')
-		(ft_putstr("You Lose\n"), dstroy(game), ft_malloc(0, CLEAR));
+		(ft_putstr("<<< You Lose >>>\n"), dstroy(game), ft_malloc(0, CLEAR));
 	if (game->map[new_y][new_x] != '1' && game->map[new_y][new_x] != 'E')
 	{
 		if (game->map[new_y][new_x] == 'C')
@@ -30,7 +30,7 @@ void	player_do(t_game *game, int new_y, int new_x)
 		game->map[new_y][new_x] = 'P';
 		moves++;
 		game->moves = moves;
-		ft_putstr("moves : ");
+		ft_putstr("Moves : ");
 		ft_putnbr(moves);
 		ft_putchar('\n');
 		player->x = new_x;
@@ -62,7 +62,7 @@ int	game_loop(t_game *game)
 {
 	static int	i;
 
-	if (i == 1000)
+	if (i == 1050)
 	{
 		move_enemy(game);
 		i = 0;
@@ -81,13 +81,13 @@ int	key_hook(int keycode, t_game *game)
 		ft_putstr("Closed\n");
 		dstroy(game);
 	}
-	else if (keycode == 119)
+	else if (keycode == 119 || keycode == 65362)
 		move_player(game, 0, -1);
-	else if (keycode == 115)
+	else if (keycode == 115 || keycode == 65364)
 		move_player(game, 0, 1);
-	else if (keycode == 97)
+	else if (keycode == 97 || keycode == 65361)
 		move_player(game, -1, 0);
-	else if (keycode == 100)
+	else if (keycode == 100 || keycode == 65363)
 		move_player(game, 1, 0);
 	draw_map(game, game->map, -1, -1);
 	return (1);
